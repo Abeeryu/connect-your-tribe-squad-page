@@ -1,10 +1,49 @@
 <%- include('./partials/head') %>
 
-<h2>Students</h2>
+  <!-- <h2>Students</h2>
 <ul>
   <% persons.forEach(person => { %>
     <li><a href="./person/<%= person.id %>"><%= person.name %></a>, squad_id <%= person.squad_id %></li>
   <% }) %>
-</ul>
+</ul> -->
 
-<%- include('./partials/foot') %>
+<div class="container">
+  <div class="filters">
+    <p>Filter</p>
+
+    <form action="/" method="get">
+      <div class="search-container">
+          <h3 class="sub-naam">ID</h3>
+          <input type="text" name="id" placeholder="ID">
+
+          <h3 class="sub-naam">Zoek Op Persoon</h3>
+          <input type="text" name="name" placeholder="Zoek op persoon">
+      </div>
+      
+      <button type="submit">Bekijk Resultaten</button>
+  </form>  
+
+  </div>
+
+  <div class="main-section">
+    <h1 class="title">Squad Naam</h1>
+    <div class="members">
+      <% persons.forEach(person => { %>
+        <!-- <li><a href="./person/<%= person.id %>"><%= person.name %></a>, squad_id <%= person.squad_id %></li> -->
+        <div class="squad-member purple">
+          <% if(person && person.avatar){ %>
+            <img src="<%= person.avatar %>" alt="<%= person.name %>">
+          <% } else{ %>  
+            <img src="/images/avatar.png" alt="member-img">
+
+         <% } %>
+          <!-- <img src="/images/image 3.png" alt="member-img"> -->
+          <h2 class="member-naam"><%= person.name %></h2>
+          <p class="member-info">Hallo, ik ben front-end developer :)</p>
+        </div>
+      <% }) %>    
+    </div>
+  </div>
+</div>
+
+  

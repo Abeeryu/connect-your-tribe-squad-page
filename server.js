@@ -25,12 +25,33 @@ app.use(express.static('public'))
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
   // Haal alle personen uit de WHOIS API op
-  fetchJson(apiUrl + '/person').then((apiData) => {
+  var query = request.query;
+
+  var url = apiUrl + '/person';
+
+  if (query.name || query.id) {
+    var queryString = '?filter={';
+    var filters = [];
+
+    if (query.name) {
+      filters.push('"name":"' + encodeURIComponent(query.name) + '"');
+    }
+
+    if (query.id) {
+      filters.push('"id":"' + encodeURIComponent(query.id) + '"');
+    }
+
+    queryString += filters.join(', ') + '}';
+
+    url += queryString;
+  }
+
+  fetchJson(url).then((apiData) => {
     // apiData bevat gegevens van alle personen uit alle squads
     // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
 
     // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
-    response.render('index', {persons: apiData.data, squads: squadData.data})
+    response.render('index', { persons: apiData.data, squads: squadData.data })
   })
 })
 
@@ -45,7 +66,7 @@ app.get('/person/:id', function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(apiUrl + '/person/' + request.params.id).then((apiData) => {
     // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-    response.render('person', {person: apiData.data, squads: squadData.data})
+    response.render('person', { person: apiData.data, squads: squadData.data })
   })
 })
 

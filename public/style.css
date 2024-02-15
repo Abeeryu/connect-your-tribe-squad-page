@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #070F2B;
+}
+
+.container {
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+}
+
+.main-section {
+    width: 70%;
+}
+
+.filters {
+    width: 30%;
+    color: white;
+    font-size: 32px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+form {
+    width: 300px;
+    /* margin: 20px auto; */
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.sub-naam {
+    font-size: 16px;
+    margin-top: 40px;
+    margin-bottom: 5px;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+input[type="text"] {
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-input {
+    width: calc(100% - 32px);
+    padding-right: 32px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #535C91;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.title {
+    margin: 0 auto 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    font-size: 32px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.members {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.squad-member {
+    flex-basis: calc(33.33% - 16px - 24px);
+    margin: 16px;
+    background: rgb(124, 115, 115);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+
+.squad-member img {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.member-naam {
+    font-weight: bold;
+}
+
+.squad-member.purple {
+    background: linear-gradient(0deg, rgb(152, 151, 151) 69%, #535C91 72%);
+}
+
+.squad-member.purple .member-naam {
+    color: #535C91;
+}
+
+.member-info {
+    margin: 15px 0;
+    color: white;
+}
+
+  
